@@ -40,10 +40,72 @@
   }
   h1,h2,h3{font-family:'Syne',sans-serif;}
   .brand{display:flex; align-items:center; justify-content:space-between; margin-bottom:22px;}
-  .brand .logo{font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(30px, 4.5vw, 42px); letter-spacing:4px;
-    background:linear-gradient(90deg,var(--accent),var(--accent2)); -webkit-background-clip:text; background-clip:text; color:transparent;
-    text-shadow:0 0 24px rgba(124,124,150,0.35), 0 2px 0 rgba(0,0,0,0.15);}
-  .brand .tag{font-family:'Space Mono',monospace; font-size:11px; color:var(--muted);}
+  /* VAANI Logo */
+  .brand .logo{
+    font-family:'Syne',sans-serif;
+    font-weight:800;
+    font-size:clamp(26px,4vw,36px);
+    letter-spacing:2px;
+    background:linear-gradient(90deg,#e6e6f2,#aab0d6);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    text-shadow:0 0 24px rgba(160,170,220,0.25);
+  }
+
+  /* Tagline */
+  .brand .tag{
+    color:#9497b8;
+  }
+
+  /* Section Titles */
+  .section-title{
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    color:#9497b8;
+    margin:22px 0 10px;
+    font-family:'Space Mono',monospace;
+  }
+
+  /* Back Button */
+  .back-btn{
+    background:none;
+    border:1px solid var(--border);
+    color:#e0e0ec;
+    border-radius:10px;
+    padding:8px 14px;
+    font-size:13px;
+    cursor:pointer;
+    margin-bottom:10px;
+  }
+
+  /* Footer */
+  .site-footer{
+    text-align:center;
+    margin-top:34px;
+    padding-top:20px;
+    border-top:1px solid var(--border);
+    font-family:'Space Mono',monospace;
+    font-size:12px;
+    color:#9497b8;
+    line-height:1.9;
+  }
+
+  .site-footer .footer-brand{
+    font-family:'Syne',sans-serif;
+    font-weight:800;
+    font-size:20px;
+    letter-spacing:1.5px;
+    background:linear-gradient(90deg,#e6e6f2,#aab0d6);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+
+  .site-footer b{
+    color:#f0f0f8;
+  }
   .stats{display:flex; gap:10px;}
   .pill{background:var(--panel); border:1px solid var(--border); border-radius:20px; padding:6px 12px; font-family:'Space Mono',monospace; font-size:13px; display:flex; align-items:center; gap:5px;}
   /* Hide every screen by default so no hidden screen can keep occupying layout space. */
@@ -173,6 +235,45 @@
   .result-stat .val{font-family:'Syne',sans-serif; font-weight:800; font-size:22px;}
   .result-stat .lbl{font-size:11px; color:var(--muted); font-family:'Space Mono',monospace; margin-top:2px;}
 
+  /* Preview list (preview screen) */
+  .preview-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:8px;
+  }
+
+  .preview-card{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:14px 16px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+  }
+
+  .preview-card .pv-native{
+    font-family:'Syne',sans-serif;
+    font-weight:700;
+    font-size:17px;
+  }
+
+  .preview-card .pv-translit{
+    font-size:11.5px;
+    color:var(--muted);
+    font-family:'Space Mono',monospace;
+    margin-top:2px;
+  }
+
+  .preview-card .pv-english{
+    font-size:13px;
+    color:var(--muted);
+    text-align:right;
+    max-width:42%;
+  }
+
   /* modal */
   .modal-bg{position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:10; display:none; align-items:flex-end; justify-content:center;}
   .modal-bg.active{display:flex;}
@@ -252,8 +353,34 @@
       </div>
     </div>
   </div>
+        <!-- PREVIEW -->
+        <div class="screen" id="screen-preview">
 
-  <!-- HOME -->
+        <button class="back-btn" onclick="exitPreview()">
+          ← Back
+        </button>
+
+        <h2 id="previewTitle">
+          Learn these first
+        </h2>
+
+        <div class="section-title">
+          Look them over, then start practice
+        </div>
+
+        <div class="preview-list" id="previewList"></div>
+
+        <button
+          class="btn"
+          style="margin-top:18px;"
+          onclick="beginPracticeFromPreview()">
+
+          Start Practice →
+        </button>
+
+        </div>
+
+        <!-- HOME -->
   <div class="screen" id="screen-home">
     <div class="home-hero">
       <div class="hero-copy">
@@ -807,6 +934,65 @@ function addXp(n){
 function refreshTopStats(){
   document.getElementById('xpVal').textContent = state.xp;
   document.getElementById('streakVal').textContent = state.streak;
+}
+
+let pendingPreview = null;
+
+function renderPreviewCards(pairs){
+  const list = document.getElementById("previewList");
+  if(!list) return;
+
+  list.innerHTML = pairs.map(([english,native,translit])=>`
+    <div class="preview-card">
+      <div>
+        <div class="pv-native">${native}</div>
+        ${translit ? `<div class="pv-translit">${translit}</div>` : ""}
+      </div>
+
+      <div class="pv-english">
+        ${english}
+      </div>
+    </div>
+  `).join("");
+}
+
+function showPreview(code,catKey){
+  pendingPreview = {
+    type:"fixed",
+    code,
+    catKey
+  };
+
+  const titleEl = document.getElementById("previewTitle");
+  if(titleEl) titleEl.textContent = `${CATEGORY_META[catKey].name} · ${LANGUAGES[code].name}`;
+
+  renderPreviewCards(DATA[code][catKey] || []);
+
+  showScreen("preview");
+}
+
+function beginPracticeFromPreview(){
+  if(!pendingPreview) return;
+
+  if(pendingPreview.type==="fixed"){
+    startLesson(
+      pendingPreview.code,
+      pendingPreview.catKey
+    );
+  }else{
+    startAiLesson(
+      pendingPreview.items,
+      pendingPreview.meta
+    );
+  }
+
+  pendingPreview=null;
+}
+
+function exitPreview(){
+  const wasFixed = pendingPreview && pendingPreview.type==="fixed";
+  pendingPreview=null;
+  showScreen(wasFixed ? "categories" : "home");
 }
 
 /* ---------------- Navigation ---------------- */
