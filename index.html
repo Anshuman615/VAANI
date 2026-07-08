@@ -46,8 +46,11 @@
   .brand .tag{font-family:'Space Mono',monospace; font-size:11px; color:var(--muted);}
   .stats{display:flex; gap:10px;}
   .pill{background:var(--panel); border:1px solid var(--border); border-radius:20px; padding:6px 12px; font-family:'Space Mono',monospace; font-size:13px; display:flex; align-items:center; gap:5px;}
+  /* Hide every screen by default so no hidden screen can keep occupying layout space. */
   .screen{display:none;}
   .screen.active{display:block;}
+  .auth-screen{display:none;}
+  .auth-screen.active{display:flex; align-items:center; justify-content:center; min-height:calc(100vh - 60px);} 
   /* ---- Orbit System (home hero) ---- */
   .home-hero{display:flex; flex-direction:column; align-items:center; gap:8px;}
   .hero-copy{text-align:center; display:flex; flex-direction:column; align-items:center; gap:12px; padding-top:6px;}
@@ -184,7 +187,8 @@
   .spinner{width:16px; height:16px; border:2px solid var(--border); border-top-color:var(--accent); border-radius:50%; animation:spin 0.8s linear infinite;}
   @keyframes spin{to{transform:rotate(360deg);}}
   .err-box{background:rgba(192,24,74,0.08); border:1px solid var(--bad); color:var(--bad); border-radius:10px; padding:12px; font-size:13px; margin-top:10px;}
-  .auth-screen{display:flex; align-items:center; justify-content:center; min-height:calc(100vh - 60px);}
+  .auth-screen{display:none;}
+  .auth-screen.active{display:flex; align-items:center; justify-content:center; min-height:calc(100vh - 60px);}
   .auth-card{background:rgba(18,24,42,0.96); border:1px solid rgba(255,255,255,0.08); border-radius:24px; padding:28px; width:min(100%,420px);}
   .auth-card h2{font-size:28px; margin-bottom:10px; color:#fff;}
   .auth-card p{color:var(--muted); margin-bottom:22px;}
@@ -629,6 +633,7 @@ async function signUpUser(email, password){
     guestMode = false;
     updateAccountButton();
     showScreen('home');
+    window.scrollTo({ top: 0, behavior: 'instant' });
     showAuthError('');
   }catch(err){
     showAuthError(authErrorMessage(err.code));
@@ -653,6 +658,7 @@ async function logInUser(email, password){
     guestMode = false;
     updateAccountButton();
     showScreen('home');
+    window.scrollTo({ top: 0, behavior: 'instant' });
     showAuthError('');
   }catch(err){
     showAuthError(authErrorMessage(err.code));
@@ -805,8 +811,10 @@ function refreshTopStats(){
 
 /* ---------------- Navigation ---------------- */
 function showScreen(name){
+  /* Make sure only one screen stays active at a time and the auth screen fully hides. */
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById('screen-'+name).classList.add('active');
+  const target = document.getElementById('screen-'+name);
+  if(target) target.classList.add('active');
   if(name==='home') renderHome();
 }
 
