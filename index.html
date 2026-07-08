@@ -199,7 +199,15 @@
   import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
   import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-  const firebaseConfig = { /* PASTE THE CONFIG OBJECT FROM FIREBASE CONSOLE HERE */ };
+  const firebaseConfig = {  {
+  apiKey: "AIzaSyDKJCLS1P2aXmaQrmbuInPvFN15J6GB5Ew",
+  authDomain: "vaani-3573b.firebaseapp.com",
+  projectId: "vaani-3573b",
+  storageBucket: "vaani-3573b.firebasestorage.app",
+  messagingSenderId: "997365521256",
+  appId: "1:997365521256:web:3613f587de6cb0d81114dd",
+  measurementId: "G-RRZH1TR54C"
+ };
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db = getFirestore(app);
