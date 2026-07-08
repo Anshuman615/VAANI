@@ -40,9 +40,8 @@
   }
   h1,h2,h3{font-family:'Syne',sans-serif;}
   .brand{display:flex; align-items:center; justify-content:space-between; margin-bottom:22px;}
-  .brand .logo{font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(30px, 4.5vw, 42px); letter-spacing:4px;
-    background:linear-gradient(90deg,var(--accent),var(--accent2)); -webkit-background-clip:text; background-clip:text; color:transparent;
-    text-shadow:0 0 24px rgba(124,124,150,0.35), 0 2px 0 rgba(0,0,0,0.15);}
+  .brand .logo{font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(26px, 4vw, 36px); letter-spacing:2px;
+    background:linear-gradient(90deg,var(--accent),var(--accent2)); -webkit-background-clip:text; background-clip:text; color:transparent;}
   .brand .tag{font-family:'Space Mono',monospace; font-size:11px; color:var(--muted);}
   .stats{display:flex; gap:10px;}
   .pill{background:var(--panel); border:1px solid var(--border); border-radius:20px; padding:6px 12px; font-family:'Space Mono',monospace; font-size:13px; display:flex; align-items:center; gap:5px;}
@@ -51,10 +50,10 @@
   /* ---- Orbit System (home hero) ---- */
   .home-hero{display:flex; flex-direction:column; align-items:center; gap:8px;}
   .hero-copy{text-align:center; display:flex; flex-direction:column; align-items:center; gap:12px; padding-top:6px;}
-  .hero-kicker{font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:#cfd3ea;}
-  .hero-headline{font-size:clamp(24px, 3.4vw, 34px); line-height:1.25; letter-spacing:-0.01em; font-style:italic; font-weight:700; max-width:22ch; color:#ffffff;}
-  .hero-quote-attr{font-family:'Space Mono',monospace; font-size:12px; color:#8f95b3; margin-top:-6px;}
-  .hero-sub{font-size:15px; line-height:1.55; color:#b7bcd8; max-width:36ch;}
+  .hero-kicker{font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted);}
+  .hero-headline{font-size:clamp(24px, 3.4vw, 34px); line-height:1.25; letter-spacing:-0.01em; font-style:italic; font-weight:700; max-width:22ch;}
+  .hero-quote-attr{font-family:'Space Mono',monospace; font-size:12px; color:var(--muted); margin-top:-6px;}
+  .hero-sub{font-size:15px; line-height:1.55; color:var(--muted); max-width:36ch;}
   .hero-cta{width:min(100%, 260px); margin-top:2px;}
   .hero-hint{text-align:center; font-family:'Space Mono',monospace; font-size:11.5px; color:var(--muted); margin-top:2px;}
   .orbit-wrap{width:100%; display:flex; flex-direction:column; align-items:center;}
@@ -62,9 +61,8 @@
   .sun{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:clamp(58px, 15vw, 76px); height:clamp(58px, 15vw, 76px); border-radius:50%;
     background:radial-gradient(circle at 32% 30%, #6b6b78, #33333d 55%, #17171c 100%);
     display:flex; align-items:center; justify-content:center; text-align:center;
-    font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(12px, 3.1vw, 14px); letter-spacing:1.8px; color:#fff;
-    text-shadow:0 0 24px rgba(124,124,150,0.35), 0 2px 0 rgba(0,0,0,0.15);
-    box-shadow:0 0 0 1px rgba(255,255,255,0.06), 0 4px 16px rgba(20,20,30,0.4), 0 0 30px 4px rgba(120,120,150,0.15); z-index:2;}
+    font-family:'Syne',sans-serif; font-weight:800; font-size:10.5px; letter-spacing:1.2px; color:#fff;
+    box-shadow:0 2px 10px rgba(30,30,40,0.25); z-index:2;}
   .ring{position:absolute; top:50%; left:50%; border:1px solid rgba(120,120,140,0.18); border-radius:50%; transform:translate(-50%,-50%);}
   .ring1{width:20%; height:20%; animation:spinCW 22s linear infinite; animation-delay:0s;}
   .ring2{width:29%; height:29%; animation:spinCCW 28s linear infinite; animation-delay:-5s;}
@@ -107,10 +105,8 @@
   .ai-card p{font-size:12.5px; color:#9a9aa8;}
   .site-footer{text-align:center; margin-top:34px; padding-top:20px; border-top:1px solid var(--border);
     font-family:'Space Mono',monospace; font-size:12px; color:var(--muted); line-height:1.9;}
-  .site-footer .footer-brand{font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(22px, 3vw, 28px); letter-spacing:4px;
-    background:linear-gradient(90deg,var(--accent),var(--accent2)); -webkit-background-clip:text; background-clip:text; color:transparent;
-    text-shadow:0 0 24px rgba(124,124,150,0.35), 0 2px 0 rgba(0,0,0,0.15);}
-  .site-footer .footer-author{display:inline-block; margin:0 2px; color:#ffffff; font-weight:800; letter-spacing:0.12em; text-transform:uppercase;}
+  .site-footer .footer-brand{font-family:'Syne',sans-serif; font-weight:800; font-size:20px; letter-spacing:1.5px;
+    background:linear-gradient(90deg,var(--accent),var(--accent2)); -webkit-background-clip:text; background-clip:text; color:transparent;}
   .site-footer b{color:var(--text); font-weight:700;}
   .why-grid{display:grid; grid-template-columns:1fr; gap:12px; margin-top:18px;}
   .why-card{background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:16px;}
@@ -131,6 +127,11 @@
   .cat-item .ci-icon{width:38px; height:38px; border-radius:10px; background:var(--panel2); display:flex; align-items:center; justify-content:center; font-size:18px;}
   .cat-item .ci-name{font-weight:600; font-size:14.5px;}
   .cat-item .ci-sub{font-size:11px; color:var(--muted); font-family:'Space Mono',monospace;}
+  .preview-list{display:flex; flex-direction:column; gap:10px; margin-top:8px;}
+  .preview-card{background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:14px 16px; display:flex; align-items:center; justify-content:space-between; gap:10px;}
+  .preview-card .pv-native{font-family:'Syne',sans-serif; font-weight:700; font-size:17px;}
+  .preview-card .pv-translit{font-size:11.5px; color:var(--muted); font-family:'Space Mono',monospace; margin-top:2px;}
+  .preview-card .pv-english{font-size:13px; color:var(--muted); text-align:right; max-width:42%;}
   .back-btn{background:none; border:1px solid var(--border); color:var(--text); border-radius:10px; padding:8px 14px; font-size:13px; cursor:pointer; margin-bottom:10px;}
   .back-btn:active{background:var(--panel2);}
   .btn{background:linear-gradient(90deg,var(--accent),var(--accent2)); color:#fff; border:none; border-radius:12px; padding:14px; font-size:15px; font-weight:600; cursor:pointer; width:100%; font-family:'Inter',sans-serif;}
@@ -159,7 +160,7 @@
   .feedback{border-radius:14px; padding:14px 16px; margin-bottom:16px; font-size:14px;}
   .feedback.good{background:rgba(61,220,151,0.12); border:1px solid var(--good); color:var(--good);}
   .feedback.bad{background:rgba(192,24,74,0.08); border:1px solid var(--bad); color:var(--bad);}
-  .feedback .correct-ans{color:var(--text); font-weight:600; margin-top:2px;}
+  .feedback .correct-ans{color:#ffffff; font-weight:700; margin-top:4px; font-size:15px;}
 
   /* results */
   .results{text-align:center; padding:30px 10px;}
@@ -194,7 +195,7 @@
   <div class="brand">
     <div>
       <div class="logo">VAANI</div>
-      <div class="tag">Different Languages, One Universe</div>
+      <div class="tag">Different languages, one universe</div>
     </div>
     <div class="stats">
       <div class="pill">🔥 <span id="streakVal">0</span></div>
@@ -206,8 +207,8 @@
   <div class="screen active" id="screen-home">
     <div class="home-hero">
       <div class="hero-copy">
-        <div class="hero-kicker">VAANI · Different Languages, One Universe</div>
-        <h1 class="hero-headline">"One language sets you in a corridor for life. Many languages open every door along the way."</h1>
+        <div class="hero-kicker">VAANI · every tongue, one universe</div>
+        <h1 class="hero-headline">"One language sets you in a corridor for life. Two languages open every door along the way."</h1>
         <div class="hero-quote-attr">— Frank Smith</div>
         <div class="hero-sub">10 languages, bite-sized lessons, streaks, and an AI that builds you a new one on demand.</div>
         <button class="btn hero-cta" onclick="document.getElementById('langLegend').scrollIntoView({behavior:'smooth'})">Explore languages</button>
@@ -250,8 +251,8 @@
     </div>
     <div class="site-footer">
       <span class="footer-brand">VAANI</span><br>
-      © 2026 · Different Languages, One Universe<br>
-      Built by <span class="footer-author">Anshumaan Panda</span> · Orbit Studio
+      © 2026 · every tongue, one universe<br>
+      Built by <b>Shivam</b> · Orbit Studio
     </div>
   </div>
 
@@ -261,6 +262,15 @@
     <h2 id="catLangTitle"></h2>
     <div class="section-title">Lessons</div>
     <div class="cat-list" id="catList"></div>
+  </div>
+
+  <!-- PREVIEW (words + meanings before the quiz) -->
+  <div class="screen" id="screen-preview">
+    <button class="back-btn" onclick="exitPreview()">← Back</button>
+    <h2 id="previewTitle">Learn these first</h2>
+    <div class="section-title">Look them over, then start practice</div>
+    <div class="preview-list" id="previewList"></div>
+    <button class="btn" style="margin-top:18px;" onclick="beginPracticeFromPreview()">Start Practice →</button>
   </div>
 
   <!-- EXERCISE -->
@@ -563,7 +573,7 @@ function openLanguage(code){
     const done = state.progress[code] && state.progress[code][key];
     const item = document.createElement('div');
     item.className = 'cat-item';
-    item.onclick = ()=>startLesson(code, key);
+    item.onclick = ()=>showPreview(code, key);
     item.innerHTML = `
       <div class="ci-left">
         <div class="ci-icon">${meta.icon}</div>
@@ -577,6 +587,53 @@ function openLanguage(code){
     list.appendChild(item);
   });
   showScreen('categories');
+}
+
+/* ---------------- Preview (learn words before the quiz) ---------------- */
+let pendingPreview = null; // {type:'fixed', code, catKey} | {type:'ai', items, meta}
+
+function renderPreviewCards(pairs){
+  // pairs: array of [english, native, translit]
+  const list = document.getElementById('previewList');
+  list.innerHTML = pairs.map(([english, native, translit])=>`
+    <div class="preview-card">
+      <div>
+        <div class="pv-native">${native}</div>
+        ${translit?`<div class="pv-translit">${translit}</div>`:''}
+      </div>
+      <div class="pv-english">${english}</div>
+    </div>
+  `).join('');
+}
+
+function showPreview(code, catKey){
+  pendingPreview = {type:'fixed', code, catKey};
+  document.getElementById('previewTitle').textContent = `${CATEGORY_META[catKey].name} · ${LANGUAGES[code].name}`;
+  renderPreviewCards(DATA[code][catKey]);
+  showScreen('preview');
+}
+
+function showAiPreview(items, meta){
+  pendingPreview = {type:'ai', items, meta};
+  document.getElementById('previewTitle').textContent = `${meta.topic} · ${meta.language}`;
+  renderPreviewCards(items.map(it => [it.english, it.native, it.transliteration||'']));
+  showScreen('preview');
+}
+
+function beginPracticeFromPreview(){
+  if(!pendingPreview) return;
+  if(pendingPreview.type === 'fixed'){
+    startLesson(pendingPreview.code, pendingPreview.catKey);
+  } else {
+    startAiLesson(pendingPreview.items, pendingPreview.meta);
+  }
+  pendingPreview = null;
+}
+
+function exitPreview(){
+  const wasFixed = pendingPreview && pendingPreview.type === 'fixed';
+  pendingPreview = null;
+  showScreen(wasFixed ? 'categories' : 'home');
 }
 
 /* ---------------- Exercise Engine ---------------- */
@@ -784,6 +841,11 @@ async function generateAiLesson(){
     errBox.innerHTML = `<div class="err-box">Please enter a language name.</div>`;
     return;
   }
+  const blockedNames = ['english','en','inglish','angrezi'];
+  if(blockedNames.includes(langInput.toLowerCase())){
+    errBox.innerHTML = `<div class="err-box">English already has its own dedicated lesson — close this and tap the <b>EN</b> planet on the home screen instead. AI Practice is for languages we haven't added yet.</div>`;
+    return;
+  }
   const btn = document.getElementById('aiGenBtn');
   btn.disabled = true;
   btn.textContent = 'Generating...';
@@ -803,7 +865,7 @@ async function generateAiLesson(){
       throw new Error('No exercises returned. Try a different language or topic.');
     }
     closeAiModal();
-    startAiLesson(data.items, {language: langInput, topic});
+    showAiPreview(data.items, {language: langInput, topic});
   }catch(err){
     errBox.innerHTML = `<div class="err-box">⚠️ ${err.message || 'Something went wrong. Try again.'}</div>`;
   }finally{
